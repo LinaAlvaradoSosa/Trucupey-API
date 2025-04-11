@@ -12,9 +12,7 @@ router.delete('/deleteProduct/:id', deleteProduct)
 router.get('/products', getProducts)
 router.get('/product/:id', getProductById)
 router.get('/products/:type', getProductsByType)
-router.get('getProductsByName/:name?', getProductsByName)
-
-
+router.get('/getProductsByName/:name?', getProductsByName)
 
 
 export default router

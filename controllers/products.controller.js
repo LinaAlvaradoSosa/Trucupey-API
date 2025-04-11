@@ -85,16 +85,14 @@ export const getProductsByType = async (req, res) => {
 };
 export const getProductsByName = async (req, res) => {
     try {
-        let { name } = req.query.name || req.params.name
-        let data;
-        
+        let name  = req.params.name
         if (name) {
-            data = await Product.find({ name: { $regex: name, $options: 'i' } });
+            let data = await Product.find({name:{$regex:name, $options: 'i' }});
+            res.status(200).json(data)
         } else {
-            data = await Product.find();
+            let dataProducts = await Product.find();
+            res.status(200).json(dataProducts)
         }
-        
-        res.status(200).json(data);
     } catch (error) {
         console.error(error);
         res.status(500).send({ error: "Ha ocurrido algo, comunícate con el admin" });
